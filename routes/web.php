@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,7 +28,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::view('profile','profile')->name('profile');
     Route::put('profile',[ProfileController::class,'update'])->name('profile.update');
 
-
+    Route::get('staff',[UserController::class,'index'])->name('staff.show');
 });
 
 require __DIR__.'/auth.php';
