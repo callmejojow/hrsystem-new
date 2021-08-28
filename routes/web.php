@@ -29,6 +29,11 @@ Route::group(['middleware' => 'auth'], function(){
     Route::put('profile',[ProfileController::class,'update'])->name('profile.update');
 
     Route::get('staff',[UserController::class,'index'])->name('staff.show');
+
+    Route::get('users/{user}/show',[UserController::class,'show'])->name('profile.show')
+    ->missing(function(){
+        return view('profile.notfound');
+    });
 });
 
 require __DIR__.'/auth.php';

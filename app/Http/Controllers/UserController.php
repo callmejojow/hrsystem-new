@@ -12,4 +12,9 @@ class UserController extends Controller
         $index = User::all();
         return view('staff',['users' => $index]);
     }
+
+    public function show(User $user)
+    {
+        return view('profile.show');
+    }
 }
