@@ -55,7 +55,7 @@
                                                      {{ $user->id }}
                                                   </td>
                                                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                    <a href="/users/{{$user->id}}/show">{{ $user->name }}</a>
+                                                    <a href="{{ route('profile.show',$user) }}">{{ $user->name }}</a>
                                                   </td>
                                                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                     {{ $user->email }}
@@ -71,6 +71,7 @@
                                         <h3>No staff yet.<h3>
                                     @endif
                                   </div>
+                                        {{ $users->links() }}
                               </div>
                           </div>
                       </div>

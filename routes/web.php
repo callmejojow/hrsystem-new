@@ -18,6 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resources([
+    'profiles' => ProfileController::class,
+    'users' => UserController::class,
+]);
+
 
 Route::group(['middleware' => 'auth'], function(){
 
@@ -30,11 +35,15 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('staff',[UserController::class,'index'])->name('staff.show');
 
-    Route::get('users/{user}/show',[UserController::class,'show'])->name('profile.show')
+    Route::get('users/{user}',[UserController::class,'show'])->name('profile.show')
     ->missing(function(){
-        return view('profile.notfound');
+        return response()->view('profile.notfound');
     });
+
+    Route::patch('users/{user}',[UserController::class,'update'])->name('user.update');
 });
+
+
 
 require __DIR__.'/auth.php';
 

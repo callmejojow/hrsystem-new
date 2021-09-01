@@ -9,12 +9,26 @@ class UserController extends Controller
 {
      public function index()
     {
-        $index = User::all();
+        $index = User::paginate(6);
         return view('staff',['users' => $index]);
     }
 
     public function show(User $user)
     {
-        return view('profile.show');
+         return view('profile.show', ['user' => $user]);
+    }
+
+    public function update(User $user, Request $request)
+    {
+
+        $user->update($request->only('name'));
+
+        if ($request->input('password')) {
+            $user()->update([
+                'password' => bcrypt($request->input('password'))
+            ]);
+        }
+
+        return view('profile.show')->with('message', 'Profile updated successfully.');
     }
 }
