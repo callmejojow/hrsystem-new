@@ -21,7 +21,7 @@ class UserController extends Controller
     public function update(User $user, Request $request)
     {
 
-        $user->update($request->only('name'));
+        $user->update($request->only('name','email'));
 
         if ($request->input('password')) {
             $user()->update([
@@ -29,6 +29,6 @@ class UserController extends Controller
             ]);
         }
 
-        return view('profile.show')->with('message', 'Profile updated successfully.');
+        return view('profile.show')->with(['message'=>'Profile updated successfully.','user' => $user]);
     }
 }
