@@ -46,5 +46,10 @@ class UserController extends Controller
         ->with(['message'=>'Staff created successfully.']);
     }
 
-    
+    public function destroy(User $user)
+    {
+      $user->delete();
+
+      return redirect()->route('staff.index')->with(['message'=>'Staff deleted successfully.']);
+    }
 }

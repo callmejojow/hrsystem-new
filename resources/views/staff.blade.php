@@ -10,7 +10,7 @@
         </div>
 
         <div class="ml-4 mt-2  ">
-             <x-button class="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+             <x-button onclick="location.href='{{ route('create') }}'" class="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
 
                  {{ __('Create') }}
 
@@ -62,19 +62,27 @@
                                                   </td>     
         
                                                   <td>
-                                                  <x-button class="relative inline-flex items-center px-3 py-0.5 border border-transparent shadow-sm text-xs font-small rounded-md text-white bg-indigo-400 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                                  <a href="{{ route('profile.show',$user) }}" class="relative inline-flex items-center px-3 py-0.5 border border-transparent shadow-sm text-xs font-small rounded-md text-white bg-indigo-400 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
 
                                                                         {{ __('Edit') }}
 
-                                                  </x-button>
+                                                  </a>
                                                   </td>
 
-                                                  <td>
-                                                  <x-button class="relative inline-flex items-center px-4 py-0.5 border border-transparent shadow-sm text-xs font-small rounded-md text-white bg-indigo-400 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                                  <td>                                                 
+                                                
+                                                  <form method="post" class="delete_form" action="       {{ route('profile.destroy',$user) }}">
 
-                                                                        {{ __('Delete') }}
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    
+                                                    <button type="submit" class="relative inline-flex items-center px-4 py-0.5 border border-transparent shadow-sm text-xs font-small rounded-md text-white bg-indigo-300 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
 
-                                                  </x-button>
+                                                                          {{ __('Delete') }}
+
+                                                    </button>
+                                                  </form>
+
                                                   </td>
                                                  </tr>
                                            @endforeach

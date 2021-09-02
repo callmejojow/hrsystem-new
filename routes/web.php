@@ -48,6 +48,8 @@ Route::group(['middleware' => 'auth'], function(){
     return view('create');
     })->name('create');
     
+
+    Route::delete('users/{user}',[UserController::class,'destroy'])->name('profile.destroy');
 });
 
     
