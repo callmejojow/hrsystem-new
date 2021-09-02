@@ -24,11 +24,27 @@ class UserController extends Controller
         $user->update($request->only('name'));
 
         if ($request->input('password')) {
-            $user()->update([
+            $user->update([
                 'password' => bcrypt($request->input('password'))
             ]);
         }
 
-        return view('profile.show')->with('message', 'Profile updated successfully.');
+        return view('profile.show', compact('user'))
+        ->with(['message'=>'Profile updated successfully.']);
     }
+
+     public function create()
+    {
+        return view('create');
+    }
+
+    public function store(Request $request)
+    {
+         $user = User::create($request->except('_token'));
+
+         return redirect()->route('staff.index')
+        ->with(['message'=>'Staff created successfully.']);
+    }
+
+    
 }

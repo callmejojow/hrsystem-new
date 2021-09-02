@@ -28,12 +28,12 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/dashboard', function () {
     return view('dashboard');
-})->name('dashboard');
+    })->name('dashboard');
 
     Route::view('profile','profile')->name('profile');
     Route::put('profile',[ProfileController::class,'update'])->name('profile.update');
 
-    Route::get('staff',[UserController::class,'index'])->name('staff.show');
+    Route::get('/staff',[UserController::class,'index'])->name('staff.index');
 
     Route::get('users/{user}',[UserController::class,'show'])->name('profile.show')
     ->missing(function(){
@@ -41,9 +41,16 @@ Route::group(['middleware' => 'auth'], function(){
     });
 
     Route::patch('users/{user}',[UserController::class,'update'])->name('user.update');
+
+    Route::post('create',[UserController::class,'store'])->name('user.store');
+
+    Route::get('create', function () {
+    return view('create');
+    })->name('create');
+    
 });
 
-
+    
 
 require __DIR__.'/auth.php';
 

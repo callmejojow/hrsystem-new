@@ -9,7 +9,7 @@
         </h2>
         </div>
 
-        <div class="ml-4 mt-2 flex-shrink-0">
+        <div class="ml-4 mt-2  ">
              <x-button class="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
 
                  {{ __('Create') }}
@@ -60,6 +60,22 @@
                                                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                     {{ $user->email }}
                                                   </td>     
+        
+                                                  <td>
+                                                  <x-button class="relative inline-flex items-center px-3 py-0.5 border border-transparent shadow-sm text-xs font-small rounded-md text-white bg-indigo-400 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+
+                                                                        {{ __('Edit') }}
+
+                                                  </x-button>
+                                                  </td>
+
+                                                  <td>
+                                                  <x-button class="relative inline-flex items-center px-4 py-0.5 border border-transparent shadow-sm text-xs font-small rounded-md text-white bg-indigo-400 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+
+                                                                        {{ __('Delete') }}
+
+                                                  </x-button>
+                                                  </td>
                                                  </tr>
                                            @endforeach
 
